@@ -40,7 +40,7 @@ pipeline {
         }
        stage('Static Code Analaysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonarcloud', installationName: 'sonarcloud') {
+                withSonarQubeEnv(credentialsId: 'SonarCloud', installationName: 'sonarcloud') {
                     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
                 }
             }
