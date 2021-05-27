@@ -63,12 +63,12 @@ pipeline {
                     spec: '''{
                         "files": [
                             {
-                            "pattern": "target/*dummy*.jar",
-                            "target": "default-generic-local/dummy"
+                            "pattern": "*dummy*.jar",
+                            "target": "libs-release-local/dummy/"
                             },
                             {
-                            "pattern": "target/pom.pom",
-                            "target": "default-generic-local/dummy"
+                            "pattern": "pom.xml",
+                            "target": "libs-release-local/dummy/"
                             }
                         ]
                     }''',
@@ -94,7 +94,7 @@ pipeline {
             
               rtMavenDeployer (
                     id: 'deployer',
-                    serverId: 'Artifactory1-1',
+                    serverId: 'Artifactory1',
                     releaseRepo: 'libs-release-local',
                     snapshotRepo: 'libs-snapshot-local',
                     // By default, 3 threads are used to upload the artifacts to Artifactory. You can override this default by setting:
