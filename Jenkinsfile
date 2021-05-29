@@ -14,6 +14,7 @@ pipeline {
 
              booleanParam(name: 'RUN', defaultValue: true, description: 'SELECT TO RUN')
     }
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3'))])
     triggers {
         pollSCM('* * * * *')
     }
@@ -109,7 +110,7 @@ pipeline {
                     pom: 'pom.xml',
                     goals: 'clean install',
                     // Maven options.
-                    opts: '-Xms1024m -Xmx4096m',
+                   // opts: '-Xms1024m -Xmx4096m',
                     resolverId: 'resolver',
                     deployerId: 'deployer',
                     // If the build name and build number are not set here, the current job name and number will be used:
