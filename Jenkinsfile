@@ -14,9 +14,7 @@ pipeline {
 
              booleanParam(name: 'RUN', defaultValue: true, description: 'SELECT TO RUN')
     }
-    // buildDiscarder {
-    //     logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3')
-    // }
+    buildDiscarder (logRotator(daysToKeepStr: '2', numToKeepStr: '3'))
     
     triggers {
         pollSCM('* * * * *')
@@ -89,11 +87,11 @@ pipeline {
 
 
 
-                rtMavenResolver (
-                    id: 'resolver',
-                    serverId: 'Artifactory1',
-                    releaseRepo: 'libs-release-local',
-                    snapshotRepo: 'libs-snapshot-local'
+                // rtMavenResolver (
+                //     id: 'resolver',
+                //     serverId: 'Artifactory1',
+                //     releaseRepo: 'libs-release-local',
+                //     snapshotRepo: 'libs-snapshot-local'
                 )  
             
               rtMavenDeployer (
@@ -113,8 +111,8 @@ pipeline {
                     pom: 'pom.xml',
                     goals: 'clean install',
                     // Maven options.
-                   // opts: '-Xms1024m -Xmx4096m',
-                    resolverId: 'resolver',
+                    opts: '-Xms1024m -Xmx4096m',
+                   // resolverId: 'resolver',
                     deployerId: 'deployer',
                     // If the build name and build number are not set here, the current job name and number will be used:
                     buildName: 'my-build-name',
