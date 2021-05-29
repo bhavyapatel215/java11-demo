@@ -7,6 +7,7 @@ pipeline {
     }
     options { 
         quietPeriod(10) 
+        buildDiscarder (logRotator(daysToKeepStr: '2', numToKeepStr: '3'))
     }
     parameters { 
             choice(name: 'ENV_TO_DEPLOY', 
@@ -14,7 +15,7 @@ pipeline {
 
              booleanParam(name: 'RUN', defaultValue: true, description: 'SELECT TO RUN')
     }
-    buildDiscarder (logRotator(daysToKeepStr: '2', numToKeepStr: '3'))
+    
     
     triggers {
         pollSCM('* * * * *')
