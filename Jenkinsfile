@@ -63,7 +63,7 @@ pipeline {
                     spec: '''{
                         "files": [
                             {
-                            "pattern": "*dummy*.jar",
+                            "pattern": "target/*demo*.jar",
                             "target": "libs-release-local/dummy/"
                             },
                             {
