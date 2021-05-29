@@ -92,7 +92,7 @@ pipeline {
                 //     serverId: 'Artifactory1',
                 //     releaseRepo: 'libs-release-local',
                 //     snapshotRepo: 'libs-snapshot-local'
-                )  
+                // )  
             
               rtMavenDeployer (
                     id: 'deployer',
