@@ -100,7 +100,7 @@ pipeline {
                     // By default, 3 threads are used to upload the artifacts to Artifactory. You can override this default by setting:
                     threads: 6,
                     // Attach custom properties to the published artifacts:
-                    properties: ['Version'='1.0.0', 'Publisher'='Bhavya']
+                    properties: ['Version=1.0.0', 'Publisher=Bhavya']
                  )
                 
                 rtMavenRun (
