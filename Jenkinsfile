@@ -6,7 +6,7 @@ pipeline {
         PRAGRA_BATCH='devs'
     }
     options { 
-        quietPeriod(30) 
+        quietPeriod(10) 
     }
     parameters { 
             choice(name: 'ENV_TO_DEPLOY', 
@@ -14,9 +14,9 @@ pipeline {
 
              booleanParam(name: 'RUN', defaultValue: true, description: 'SELECT TO RUN')
     }
-    buildDiscarder {
-        logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3')
-    }
+    // buildDiscarder {
+    //     logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '3')
+    // }
     
     triggers {
         pollSCM('* * * * *')
